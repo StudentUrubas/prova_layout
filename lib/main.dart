@@ -45,11 +45,23 @@ class TelaDashboard extends StatelessWidget {
             const SizedBox(height: 16.0),
             Row(
               children: const [
-                SummaryCard(icon: Icons.flutter_dash, value: '124', label: 'Aves Vistas'),
+                SummaryCard(
+                  icon: Icons.flutter_dash,
+                  value: '124',
+                  label: 'Aves Vistas',
+                ),
                 SizedBox(width: 8.0),
-                SummaryCard(icon: Icons.place, value: '18', label: 'Locais Visitados'),
+                SummaryCard(
+                  icon: Icons.place,
+                  value: '18',
+                  label: 'Locais Visitados',
+                ),
                 SizedBox(width: 8.0),
-                SummaryCard(icon: Icons.camera_alt, value: '45', label: 'Fotos'),
+                SummaryCard(
+                  icon: Icons.camera_alt,
+                  value: '45',
+                  label: 'Fotos',
+                ),
               ],
             ),
             const SizedBox(height: 24.0),
@@ -61,46 +73,56 @@ class TelaDashboard extends StatelessWidget {
             Stack(
               clipBehavior: Clip.none,
               children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
+                Card(
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.grey.shade300),
                   ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.star, size: 48, color: Colors.amber),
-                      const SizedBox(width: 16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Gaviao-Real',
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Avistado no Parque Central',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.star, size: 48, color: Colors.amber),
+                        const SizedBox(width: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Gaviao-Real',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              'Avistado no Parque Central',
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Positioned(
                   top: -8,
                   right: -8,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Text(
                       'Raro',
-                      style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -108,14 +130,21 @@ class TelaDashboard extends StatelessWidget {
                   bottom: -8,
                   left: -8,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Text(
                       'Confirmado',
-                      style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -129,18 +158,12 @@ class TelaDashboard extends StatelessWidget {
             const SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text('Beija-Flor'),
-                Text('10:30'),
-              ],
+              children: const [Text('Beija-Flor'), Text('10:30')],
             ),
             const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text('Canário-da-Terra'),
-                Text('09:15'),
-              ],
+              children: const [Text('Canário-da-Terra'), Text('09:15')],
             ),
           ],
         ),
