@@ -43,27 +43,10 @@ class TelaDashboard extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16.0),
-            Row(
-              children: const [
-                SummaryCard(
-                  icon: Icons.flutter_dash,
-                  value: '124',
-                  label: 'Aves Vistas',
-                ),
-                SizedBox(width: 8.0),
-                SummaryCard(
-                  icon: Icons.place,
-                  value: '18',
-                  label: 'Locais Visitados',
-                ),
-                SizedBox(width: 8.0),
-                SummaryCard(
-                  icon: Icons.camera_alt,
-                  value: '45',
-                  label: 'Fotos',
-                ),
-              ],
-            ),
+            
+            // 👉 DESAFIO 8: GridView.count em formato 2x2
+            const BlocoEstatisticaGrid(),
+
             const SizedBox(height: 24.0),
             const Text(
               'Destaque da Semana',
@@ -172,6 +155,45 @@ class TelaDashboard extends StatelessWidget {
   }
 }
 
+// Widget que implementa o GridView.count (2x2)
+class BlocoEstatisticaGrid extends StatelessWidget {
+  const BlocoEstatisticaGrid({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+      crossAxisCount: 2, // 2 colunas
+      crossAxisSpacing: 8.0,
+      mainAxisSpacing: 8.0,
+      childAspectRatio: 1.5,
+      shrinkWrap: true, // Necessário para funcionar dentro do SingleChildScrollView
+      physics: const NeverScrollableScrollPhysics(), // Desativa a rolagem própria da grade
+      children: const [
+        SummaryCard(
+          icon: Icons.flutter_dash,
+          value: '124',
+          label: 'Aves Vistas',
+        ),
+        SummaryCard(
+          icon: Icons.place,
+          value: '18',
+          label: 'Locais Visitados',
+        ),
+        SummaryCard(
+          icon: Icons.camera_alt,
+          value: '45',
+          label: 'Fotos',
+        ),
+        SummaryCard(
+          icon: Icons.favorite,
+          value: '12',
+          label: 'Favoritas',
+        ),
+      ],
+    );
+  }
+}
+
 class SummaryCard extends StatelessWidget {
   final IconData icon;
   final String value;
@@ -186,28 +208,28 @@ class SummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.all(12.0),
-        decoration: BoxDecoration(
-          color: Colors.teal.shade50,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          children: [
-            Icon(icon, size: 28, color: Colors.teal),
-            const SizedBox(height: 8),
-            Text(
-              value,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 10, color: Colors.grey),
-            ),
-          ],
-        ),
+    // Nota: Removido o 'Expanded' aqui de dentro pois o GridView já gerencia o tamanho de cada célula
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      decoration: BoxDecoration(
+        color: Colors.teal.shade50,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 28, color: Colors.teal),
+          const SizedBox(height: 8),
+          Text(
+            value,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 10, color: Colors.grey),
+          ),
+        ],
       ),
     );
   }
