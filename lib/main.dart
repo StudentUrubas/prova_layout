@@ -43,24 +43,21 @@ class TelaDashboard extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16.0),
-
             Row(
-              children: [
-                _SummaryCard(icon: Icons.flutter_dash, value: '124', label: 'Aves Vistas', color: Colors.teal.shade100),
-                const SizedBox(width: 8.0),
-                _SummaryCard(icon: Icons.place, value: '18', label: 'Locais Visitados', color: Colors.teal.shade50),
-                const SizedBox(width: 8.0),
-                _SummaryCard(icon: Icons.camera_alt, value: '45', label: 'Fotos', color: Colors.teal.shade100),
+              children: const [
+                SummaryCard(icon: Icons.flutter_dash, value: '124', label: 'Aves Vistas'),
+                SizedBox(width: 8.0),
+                SummaryCard(icon: Icons.place, value: '18', label: 'Locais Visitados'),
+                SizedBox(width: 8.0),
+                SummaryCard(icon: Icons.camera_alt, value: '45', label: 'Fotos'),
               ],
             ),
             const SizedBox(height: 24.0),
-
             const Text(
               'Destaque da Semana',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16.0),
-
             Stack(
               clipBehavior: Clip.none,
               children: [
@@ -107,6 +104,21 @@ class TelaDashboard extends StatelessWidget {
                     ),
                   ),
                 ),
+                Positioned(
+                  bottom: -8,
+                  left: -8,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Text(
+                      'Confirmado',
+                      style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 24.0),
@@ -137,17 +149,16 @@ class TelaDashboard extends StatelessWidget {
   }
 }
 
-class _SummaryCard extends StatelessWidget {
+class SummaryCard extends StatelessWidget {
   final IconData icon;
   final String value;
   final String label;
-  final Color color;
 
-  const _SummaryCard({
+  const SummaryCard({
+    super.key,
     required this.icon,
     required this.value,
     required this.label,
-    required this.color,
   });
 
   @override
@@ -156,7 +167,7 @@ class _SummaryCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
-          color: color,
+          color: Colors.teal.shade50,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
