@@ -47,59 +47,11 @@ class TelaDashboard extends StatelessWidget {
             // LINHA 1: Cards Lado a Lado usando Expanded
             Row(
               children: [
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.teal.shade100,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      children: const [
-                        Icon(Icons.flutter_dash, size: 36, color: Colors.teal),
-                        SizedBox(height: 8),
-                        Text(
-                          '124',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Aves Vistas',
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12.0),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.teal.shade50,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      children: const [
-                        Icon(Icons.place, size: 36, color: Colors.teal),
-                        SizedBox(height: 8),
-                        Text(
-                          '18',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Locais Visitados',
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                _buildSummaryCard(Icons.flutter_dash, '124', 'Aves Vistas', Colors.teal.shade100),
+                const SizedBox(width: 8.0),
+                _buildSummaryCard(Icons.place, '18', 'Locais Visitados', Colors.teal.shade50),
+                const SizedBox(width: 8.0),
+                _buildSummaryCard(Icons.camera_alt, '45', 'Fotos', Colors.teal.shade100),
               ],
             ),
             const SizedBox(height: 24.0),
@@ -174,5 +126,34 @@ class TelaDashboard extends StatelessWidget {
       ),
     );
   }
-}
 
+  Widget _buildSummaryCard(IconData icon, String value, String label, Color color) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          children: [
+            Icon(icon, size: 28, color: Colors.teal),
+            const SizedBox(height: 8),
+            Text(
+              value,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 10, color: Colors.grey),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
